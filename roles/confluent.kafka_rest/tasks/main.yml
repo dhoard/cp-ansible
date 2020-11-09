@@ -153,6 +153,8 @@
     mode: 0640
     owner: "{{kafka_rest_user}}"
     group: "{{kafka_rest_group}}"
+  when: kafka_rest_custom_log4j|bool
+  notify: restart kafka-rest
   notify: restart kafka-rest
 
 - name: Enable Secrets Protection

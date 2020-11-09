@@ -29,6 +29,8 @@ kafka_broker_service_overrides:
 kafka_broker_service_environment_overrides:
   KAFKA_HEAP_OPTS: "-Xms6g -Xmx6g -XX:MetaspaceSize=96m -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:G1HeapRegionSize=16M -XX:MinMetaspaceFreeRatio=50 -XX:MaxMetaspaceFreeRatio=80"
   KAFKA_OPTS: "{{ kafka_broker_final_java_args | java_arg_build_out }}"
+  KAFKA_LOG4J_OPTS: "{% if kafka_broker_custom_log4j|bool %}-Dlog4j.configuration=file:{{kafka_broker.log4j_file}}{% endif %}"
+  LOG_DIR: "{% if kafka_broker_custom_log4j|bool %}{{kafka_broker.appender_log_path}}{% endif %}"
   CONFLUENT_SECURITY_MASTER_KEY: "{% if kafka_broker_secrets_protection_enabled|bool %}{{secrets_protection_masterkey}}{% endif %}"
 
 kafka_broker_sysctl:
