@@ -148,7 +148,6 @@
     group: "{{ksql_group}}"
   when: ksql_custom_log4j|bool
   notify: restart ksql
-  notify: restart ksql
 
 - name: Enable Secrets Protection
   include_tasks: ../../tasks/secrets_protection.yml

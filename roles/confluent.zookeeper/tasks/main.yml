@@ -155,7 +155,6 @@
     group: "{{zookeeper_group}}"
   when: zookeeper_custom_log4j|bool
   notify: restart zookeeper
-  notify: restart zookeeper
 
 - name: Create Zookeeper Jaas config
   template:

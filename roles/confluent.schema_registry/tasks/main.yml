@@ -139,7 +139,6 @@
     group: "{{schema_registry_group}}"
   when: schema_registry_custom_log4j|bool
   notify: restart schema-registry
-  notify: restart schema-registry
 
 - name: Enable Secrets Protection
   include_tasks: ../../tasks/secrets_protection.yml

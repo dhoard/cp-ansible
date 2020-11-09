@@ -142,7 +142,6 @@
     group: "{{kafka_connect_group}}"
   when: kafka_connect_custom_log4j|bool
   notify: restart connect distributed
-  notify: restart connect distributed
 
 - name: Enable Secrets Protection
   include_tasks: ../../tasks/secrets_protection.yml
